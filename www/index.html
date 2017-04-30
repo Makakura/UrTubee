@@ -22,19 +22,21 @@
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
-
+    <script type="text/javascript" src="lib/xml2json.min.js" charset="UTF-8"></script>
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="lib/angular-youtube-mb/src/angular-youtube-embed.js"></script>
     <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
     <script src="cordova.js"></script>
     <!-- your app's js -->
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/app.js"></script>
+    
   </head>
-  <body ng-app="starter">
+  <body ng-app="app">
     <!--
       The nav bar that will be updated as we navigate between views.
     -->

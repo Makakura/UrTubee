@@ -1,0 +1,19 @@
+<ion-view hide-nav-bar="true">
+  <ion-content>
+      <ion-list>
+        <ion-item ng-repeat="item in Sentences">
+          <h2>{{item.sentence}}</h2>
+          <p>Video Title: {{item.videoTitle}}</p>
+          <ion-option-button class="button-calm"
+                             ng-click="edit(item)">
+            Thêm thực hành
+        </ion-option-button>
+          <ion-option-button class="button-assertive"
+                             ng-click="addItem(item)">
+            Xóa
+        </ion-option-button>
+        
+        </ion-item>
+      </ion-list>
+  </ion-content>
+</ion-view>
