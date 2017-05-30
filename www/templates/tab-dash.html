@@ -1,27 +1,12 @@
-<ion-view hide-nav-bar="true">
-  <ion-header-bar style="padding: 0px;" ng-click="playerClick()">
-    <youtube-video  id= "player" class="youtube" video-id="theBestVideo" player-vars="playerVars"></youtube-video>
-  </ion-header-bar>
-  <ion-content style="margin-top: {{playerHeight}}" on-scroll="onScroll()" on-scroll-complete="onScrollCom()">
+<ion-view  title="List video">
+  <ion-content >
     <ion-list>
-      <ion-item ng-repeat="item in curVideo.sub" class = "wrap" ng-class= "{focused  : item == curSubItem}" id = "{{item.timeStart}}">
-        <div class="row" >
-          <div class="col col-80 subBox" ng-click="timeClick(item)" >
-            <p class = "subText" >{{item.__text}}</p>
-          </div>
-          <div class="col timeBox"  >
-            <p class="timeText"> {{item.timeStart}}</p>
-          </div>
-        </div>
-        <ion-option-button class="button-balanced"
-                             ng-click="addItem(item)">
-            Lưu
-        </ion-option-button>
-        <ion-option-button class="button-calm"
-                             ng-click="edit(item)">
-            Dịch
-        </ion-option-button>
-      </ion-item>
+      <a ng-repeat="video in videos " class="videoItem item item-thumbnail-left" href="#" ng-click="videoClick(video)" ng-href="#/tab/videoplayer">
+        <img src="{{video.thumbnail}}" style="object-fit: cover;"></img>
+        <h2 style="">{{video.title}}</h2>
+        <p>{{video.views}} lượt xem</p>
+        <p>{{video.time}}</p>
+      </a>
     </ion-list>
   </ion-content>
 </ion-view>

@@ -20,14 +20,16 @@ angular.module('app', ['ionic', 'app.controllers', 'app.services','youtube-embed
     } catch (error) {
         alert(error);
     }
+   // $cordovaSQLite.execute(db, 'DROP TABLE Sentences');
     $cordovaSQLite.execute(db, 
     'CREATE TABLE IF NOT EXISTS Sentences '+
     '(id INTEGER PRIMARY KEY AUTOINCREMENT,'+
-    ' sentence TEXT, videoId TEXT, videoTitle TEXT)');
+    ' sentence TEXT, videoId TEXT, videoTitle TEXT, point INTERGER)');
+    
     $cordovaSQLite.execute(db, 
     'CREATE TABLE IF NOT EXISTS Videos '+
-    '(id INTEGER PRIMARY KEY AUTOINCREMENT,'+
-    'videoId TEXT, videoTitle TEXT, sub TEXT)');
+    '(id TEXT PRIMARY KEY, title TEXT, sub TEXT, dt TEXT, thumbnail TEXT)');
+     
   });
 })
 
@@ -39,7 +41,24 @@ angular.module('app', ['ionic', 'app.controllers', 'app.services','youtube-embed
     abstract: true,
     templateUrl: 'templates/tabs.html'
   })
-
+  .state('tab.dash', {
+    url: '/dash',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/tab-dash.html',
+        controller: 'DashCtrl'
+      }
+    }
+  })
+   .state('tab.recent', {
+    url: '/recent',
+    views: {
+      'tab-recent': {
+        templateUrl: 'templates/tab-recent.html',
+        controller: 'RecentCtrl'
+      }
+    }
+  })
   .state('tab.videoplayer', {
     url: '/videoplayer',
     views: {
@@ -50,36 +69,27 @@ angular.module('app', ['ionic', 'app.controllers', 'app.services','youtube-embed
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.sentence', {
+      url: '/sentence',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-list-sentences.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+        'tab-sentence': {
+          templateUrl: 'templates/tab-sentences.html',
+          controller: 'SentenceCtrl'
         }
       }
     })
 
-  .state('tab.account', {
-    url: '/account',
+  .state('tab.practice', {
+    url: '/practice',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+      'tab-practice': {
+        templateUrl: 'templates/tab-practice.html',
+        controller: 'PracticeCtrl'
       }
     }
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/videoplayer');
+  $urlRouterProvider.otherwise('/tab/dash');
 
 });

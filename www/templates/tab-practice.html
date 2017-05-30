@@ -1,0 +1,35 @@
+<ion-view  hide-nav-bar="true">
+  <ion-content scroll="false" ng-if = "curSub != null"  style="display: flex;flex-direction: column-reverse;text-align: center;">
+    <div>
+    <button class="button ion-android-microphone record" id="boton" ng-click="record()" ng-if="!isRecording"></button>
+    <button class="button ion-stop record" id="boton" ng-click="stopRecord()" ng-if="isRecording"></button>
+    </div>
+    <div class="list" style="text-align: center;" ng-if = "isShowPoint">
+      <label class="item item-input">
+        <span style="padding: 3px 10px 7px 0px; font-size: 20px;"  class="input-label">Point: </span>
+        <p style="font-size:18px;color:darkgoldenrod">{{point}}/100</p></br>
+      </label>
+      <label class="item item-input">
+        <span style="padding: 3px 10px 7px 0px; font-size: 20px;"  class="input-label">Focus words: </span>
+        <p style="font-size:18px;color: red">{{focusWords}}</p>
+      </label>
+      
+    </div>
+    <div class="regText" >
+      <p style="position: relative;top: 50%;">{{ recognizedText }}</p>
+    </div>
+    <div class="row">
+      <div class="col col-80">
+        <h4 >{{curSub.sentence.__text}}</h4>
+      </div>
+      <div class="col">
+        <button class="button button-assertive" ng-click="watch()"  >
+            <i class="icon ion-android-arrow-dropright-circle"></i>
+        </button>
+      </div>
+    </div> 
+  </ion-content>
+  <ion-content scroll="false" ng-if = "curSub == null" style="text-align: center; margin-top: 50px;">
+    <h3 style="position: relative;top: 50%; color: darkgray">No any selected questions</h3>
+  </ion-content>
+</ion-view>

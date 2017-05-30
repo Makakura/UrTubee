@@ -1,0 +1,33 @@
+<ion-view title= 'Saved Sentences'>
+  <ion-nav-buttons side="right">
+        <button ng-click="clearSentences()" class="button button-icon icon ion-ios-trash-outline"></button>
+  </ion-nav-buttons>
+  <ion-header-bar class="bar-light bar-subheader searchBar">
+      <input type="text" ng-change="searchChange()" placeholder="Search a sentences" data-ng-model="searchStr">
+      <button ng-if="searchStr.length"
+             
+              class="button button-icon input-button ion-ios-close-empty"
+              ng-click="empty()">
+      </button>
+      
+</ion-header-bar>
+  <ion-content>
+      <ion-list>
+        <ion-item class= "sentenceItem" ng-repeat="item in Sentences | filter: searchStr"  
+          ng-click="itemClick(item)" ng-href="#/tab/videoplayer" >
+          <h2>{{item.sentence.__text}}</h2>
+          <p>At: {{item.sentence.timeStart}} - Video: {{item.videoTitle}}</p>
+          <p>Practice Point: {{item.point}}</p>
+          <ion-option-button class="button-calm"
+                             ng-click="practice(item)">
+            Practice
+        </ion-option-button>
+          <ion-option-button class="button-assertive"
+                             ng-click="remove(item)">
+            Remove
+        </ion-option-button>
+        
+        </ion-item>
+      </ion-list>
+  </ion-content>
+</ion-view>

@@ -11,16 +11,21 @@ navigation history that also transitions its views in and out.
     <ion-nav-view name="tab-dash"></ion-nav-view>
   </ion-tab>
 
-  <!-- Library tab -->
+  <!-- recent tab -->
+  <ion-tab icon-off="ion-android-time" 
+  icon-on="ion-android-time" href="#/tab/recent" class= "tabColor">
+    <ion-nav-view name="tab-recent" ></ion-nav-view>
+  </ion-tab>
+  <!-- Sentences tab -->
   <ion-tab icon-off="ion-ios-paper-outline" 
-  icon-on="ion-ios-paper" href="#/tab/chats" class= "tabColor">
-    <ion-nav-view name="tab-chats" ></ion-nav-view>
+  icon-on="ion-ios-paper" href="#/tab/sentence" class= "tabColor">
+    <ion-nav-view name="tab-sentence" ></ion-nav-view>
   </ion-tab>
 
   <!-- Practice tab -->
   <ion-tab icon-off="ion-ios-speedometer-outline" 
-  icon-on="ion-ios-speedometer" href="#/tab/account" class= "tabColor">
-    <ion-nav-view name="tab-account"></ion-nav-view>
+  icon-on="ion-ios-speedometer" href="#/tab/practice" class= "tabColor">
+    <ion-nav-view name="tab-practice"></ion-nav-view>
   </ion-tab>
 
 

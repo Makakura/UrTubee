@@ -1,0 +1,43 @@
+<ion-view title= 'Recent'>
+  <ion-nav-buttons side="right">
+        <button ng-click="clearRecent()" class="button button-icon icon ion-ios-trash-outline"></button>
+  </ion-nav-buttons>
+  <ion-header-bar class="bar-light bar-subheader searchBar">
+      <input type="text" ng-change="searchChange()" placeholder="Search a sentences/video" data-ng-model="searchStr">
+      <button ng-if="searchStr.length"
+             
+              class="button button-icon input-button"
+              ng-class="isSearched ? 'ion-ios-close-empty':'ion-ios-search'"
+              ng-click="search()">
+      </button>
+      
+</ion-header-bar>
+  <ion-content>
+      <ion-list>
+        <ion-item ng-repeat="video in videos  | filter: filterStr" class="videoItem" ng-click="videoClick(video)" ng-href="#/tab/videoplayer">
+        
+        <div class="row" >
+          <div class="col col-33">
+            <img src="{{video.thumbnail}}" width="100%"></img>
+          </div>
+          <div class="col">
+            <h2>{{video.title}}</h2>
+            <p>{{video.dt}}</p>
+          </div>
+        </div>      
+        <div class="row" ng-if = 'isSearched'>
+          <div class="col col-80 subBox" ng-click="timeClick(item)" >
+            <p class = "subText" style="color: dodgerblue !important;">Result: {{resultSub.__text}}</p>
+          </div>
+          <div class="col timeBox"  >
+            <p class="timeText"> {{resultSub.timeStart}}</p>
+          </div>
+        </div>
+        <ion-option-button class="button-assertive"
+                             ng-click="remove(video)">
+            Xóa
+        </ion-option-button>
+      </ion-item>
+      </ion-list>
+  </ion-content>
+</ion-view>
